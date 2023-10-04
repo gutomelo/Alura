@@ -29,4 +29,9 @@ public class Filme extends Titulo implements Classificavel {
     public String toString() {
         return "Filme: " + this.getNome();
     }
+
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
+    }
 }
