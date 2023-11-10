@@ -18,41 +18,54 @@ import java.util.Scanner;
 public class PrincipalComBusca {
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner leitura = new Scanner(System.in);
-        System.out.println("Digite o filme para busca: ");
-        var busca = leitura.nextLine();
+        String busca = "";
+        List<Titulo> titulos = new ArrayList();
 
-        String endereco = "https://www.omdbapi.com/?t=" + busca + "&apikey=6585022c";
+        while (!busca.equalsIgnoreCase("sair") {
+            System.out.println("Digite o filme para busca: ");
+            var busca = leitura.nextLine();
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
+            if (busca.equalsIgnoreCase("sair")) {
+                break;
+            }
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            String endereco = "https://www.omdbapi.com/?t=" + busca + "&apikey=6585022c";
 
-        //System.out.println(response.body());
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
 
-        String json = response.body();
-        System.out.println(json);
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+            //System.out.println(response.body());
 
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
-        try {
-            Titulo meuTitulo = new Titulo(meuTituloOmdb);
-            System.out.println("Titulo ja convertido!");
-            System.out.println(meuTitulo);
+            String json = response.body();
+            System.out.println(json);
 
-            FileWriter escrita = new FileWriter("filmes.txt");
-            escrita.write(meuTitulo.toString());
-            escrita.close();
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 
-        } catch (NumberFormatException e){
-            System.out.println("Acontenceu um erro: "+ e.getMessage());
-        } catch (IllegalArgumentException e){
-            System.out.println("Algum erro de argumento na busca, verifique o endereço:");
-        } catch (ErroDeConversaoDeAnoException e){
-            System.out.println(e.getMessage());
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
+            try {
+                Titulo meuTitulo = new Titulo(meuTituloOmdb);
+                System.out.println("Titulo ja convertido!");
+                System.out.println(meuTitulo);
+
+//                FileWriter escrita = new FileWriter("filmes.txt");
+//                escrita.write(meuTitulo.toString());
+//                escrita.close();
+
+                titulos.add(meuTitulo);
+
+            } catch (NumberFormatException e) {
+                System.out.println("Acontenceu um erro: " + e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Algum erro de argumento na busca, verifique o endereço:");
+            } catch (ErroDeConversaoDeAnoException e) {
+                System.out.println(e.getMessage());
+            }
+
         }
+        System.out.println("Lista de Filmes: " + titulos);
         System.out.println("O programa finalizou corretamente!");
 
     }
