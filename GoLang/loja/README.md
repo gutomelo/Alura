@@ -1,12 +1,27 @@
 # Projeto Loja - Golang com SQLite
 
-Este projeto é uma aplicação web de uma loja desenvolvida em Go (Golang), utilizando o banco de dados SQLite. O projeto foi desenvolvido com base no curso [Go Lang: Desenvolvendo aplicações web com Go](https://cursos.alura.com.br/course/go-lang-web) da Alura.
+Este repositório contém uma aplicação web de uma loja, desenvolvida em Go (Golang) e utilizando o banco de dados SQLite com template HTML em Bootstrap. A aplicação permite realizar operações CRUD (Create, Read, Update, Delete) para gerenciar produtos. O projeto foi desenvolvido como parte do curso [Go Lang: Desenvolvendo aplicações web com Go](https://cursos.alura.com.br/course/go-lang-web) da Alura.
+
 
 ## Tecnologias Utilizadas
 
 - **Linguagem**: Go (Golang)
 - **Banco de Dados**: SQLite
 - **Framework Web**: `net/http` nativo do Go
+
+
+## Arquitetura
+
+Este projeto segue a arquitetura MVC (Model-View-Controller):
+
+- **Model (Modelo)**: Responsável pela definição das estruturas de dados e pela interação com o banco de dados. Em `models/produto.go`, estão as definições e métodos para manipular os dados dos produtos no banco de dados SQLite.
+  
+- **View (Visão)**: Utiliza templates HTML para renderizar as páginas da aplicação, fornecendo uma interface amigável ao usuário. As views estão localizadas no diretório `templates` e utilizam o Bootstrap via CDN para estilização e responsividade.
+
+- **Controller (Controlador)**: Controla a lógica de negócios e responde às requisições HTTP, interagindo com os models e renderizando as views. Os controladores estão localizados no diretório `controllers` e são responsáveis por lidar com as rotas da aplicação.
+
+Essa separação permite uma melhor organização do código, facilitando a manutenção e a evolução da aplicação.
+
 
 ## Funcionalidades
 
