@@ -22,18 +22,18 @@ Este projeto é uma aplicação web de uma loja desenvolvida em Go (Golang), uti
 
 ## Estrutura do Projeto
 .
-├── main.go            # Arquivo principal da aplicação
-├── models             # Contém as definições de modelos e interação com o banco de dados
-│   └── produto.go     # Modelo do produto e funções de interação com o banco
-├── controllers        # Contém os controladores que gerenciam as rotas e a lógica de negócios
-│   └── produto.go     # Controlador para gerenciar as operações de produto
-├── templates          # Templates HTML para renderização das páginas
-│   ├── index.html     # Página principal que lista os produtos
-│   ├── edit.html      # Formulário para cadastrar e editar produtos
-│   └── new.html       # Formulário para criação de um novo produto
-├── db/loja.db         # Banco de dados SQLite
-├── go.mod             # Arquivo de dependências do Go
-└── README.md          # Documentação do projeto
+-├── main.go            # Arquivo principal da aplicação
+-├── models             # Contém as definições de modelos e interação com o banco de dados
+-│   └── produto.go     # Modelo do produto e funções de interação com o banco
+-├── controllers        # Contém os controladores que gerenciam as rotas e a lógica de negócios
+-│   └── produto.go     # Controlador para gerenciar as operações de produto
+-├── templates          # Templates HTML para renderização das páginas
+-│   ├── index.html     # Página principal que lista os produtos
+-│   ├── edit.html      # Formulário para cadastrar e editar produtos
+-│   └── new.html       # Formulário para criação de um novo produto
+-├── db/loja.db         # Banco de dados SQLite
+-├── go.mod             # Arquivo de dependências do Go
+-└── README.md          # Documentação do projeto
 
 
 
